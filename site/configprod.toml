@@ -1,0 +1,9 @@
+#baseurl = "https://landingpagedraft.linikerja.id"
+baseurl = "https://linikerja.id"
+DefaultContentLanguage = "id"
+title = "LiniKerja - Aplikasi Kolaborasi, Komunikasi dan Produktivitas Kerja Tim"
+
+# RSS, categories and tags disabled for an easy start
+# See configuration options for more details:
+# https://gohugo.io/getting-started/configuration/#toml-configuration
+disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
