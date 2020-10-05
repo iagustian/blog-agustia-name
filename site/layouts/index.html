@@ -1,336 +1,113 @@
 {{ define "main" }}
-
-<!--[if lt IE 8]>
-  <p class="browserupgrade">
-    You are using an <strong>outdated</strong> browser. Please
-    <a href="http://browsehappy.com/">upgrade your browser</a> to improve your
-    experience.
-  </p>
-<![endif]-->
-
-<main>
-  <!-- ./App Landing - page header -->
-  <!-- ./Page header -->
-  <header class="header section social-media-heading">
-    <div class="container py-md-5">
-      <div class="row gap-y align-items-center">
-        <div class="col-lg-6 col-xl-5 text-center text-lg-left">
-          <!-- <p class="badge badge-6 border small bold px-2">
-            <span class="accent">15% Off</span> Paket Unicorn</p> -->
-          <h2 class="font-lg extra-bold">Aplikasi Kolaborasi Dan Produktifitas Kerja Tim</h2>
-          <p class="lead alpha-8 my-5">Solusi untuk mengelola <br/>capaian kerja, penugasan, dan target bisnis<br/> yang ringan dan fleksibel</p>
-          <!-- <a target="_blank" href="https://bit.ly/eflyer-linikerja" class="btn btn-4 btn-rounded px-3">Unduh E-Flyer</a> -->
-          <a href="https://web.linikerja.id/register" class="btn btn-3 btn-rounded px-3">Coba Sekarang</a>
-        </div>
-        <div class="col-lg-6 ml-lg-auto text-center text-lg-right">
-          <img src="img/linikerja/main-0.png" class="social-image" alt="" style="width: 85%;">
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- ./LiniTugas -->
-  <section class="section overflow-hidden">
-    <div class="container bring-to-front">
-      <div class="section-heading text-center pb-5">
-        <h2 class="bold">Fitur-Fitur Di LiniKerja</h2>
-        <p class="lead color-2">Lini<span class="bold">Tugas</span>, Lini<span class="bold">Pedia</span> dan Banyak Lini Lainnya</p>
-      </div>
-      <div class="row gap-y align-items-center">
-        <div class="col-md-6 col-lg-5 mr-lg-auto">
-          <div class="center-xy op-1">
-            <div class="shape shape-background rounded-circle shadow-lg bg-3" style="width: 600px; height: 600px;" data-aos="zoom-in"></div>
-          </div>
-          <div class="device-twin align-items-center">
-            <div class="mockup absolute" data-aos="fade-left">
-              <div class="screen">
-                <img src="img/linikerja/mockup/linitugas-2.png" alt="...">
-              </div>
-              <span class="button"></span>
-            </div>
-            <div class="iphone front mr-0">
-              <div class="screen shadow-box">
-                <img src="img/linikerja/mockup/linitugas-1.png" alt="...">
-              </div>
-              <div class="notch"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 text-center text-md-left">
-          <div class="section-heading">
-            <i class="fas fa-tasks fa-2x text-danger mb-3"></i>
-            <h2 class="bold font-md">LiniTugas</h2>
-            <p>Fitur Pengelolaan Capaian dan Tugas Kerja</p>
-          </div>
-          <div class="row gap-y">
-            <div class="col-md-6">
-              <div class="media flex-column flex-lg-row align-items-center align-items-md-start">
-                <i class="mx-auto ml-md-0 mr-md-3 accent fab fa-trello fa-3x"></i>
-                <div class="media-body mt-3 mt-md-0">
-                  <h5 class="bold mt-0 mb-1">Semudah <span class="italic">Trello</span></h5>
-                  <p class="m-0 d-md-none d-lg-block">Kemudahan aplikasi world-class Trello di dalam keseharian kerja anda</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="media flex-column flex-lg-row align-items-center align-items-md-start">
-                <i class="mx-auto ml-md-0 mr-md-3 accent fas fa-clipboard-list fa-3x"></i>
-                <div class="media-body mt-3 mt-md-0">
-                  <h5 class="bold mt-0 mb-1">Checklist To-do</h5>
-                  <p class="m-0 d-md-none d-lg-block">Cara termudah untuk tetap fokus dan produktif</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="media flex-column flex-lg-row align-items-center align-items-md-start">
-                <i class="mx-auto ml-md-0 mr-md-3 accent fas fa-hourglass-half fa-3x"></i>
-                <div class="media-body mt-3 mt-md-0">
-                  <h5 class="bold mt-0 mb-1">Progress Bar Aktivitas</h5>
-                  <p class="m-0 d-md-none d-lg-block">Transparansi dan Capaian Bisnis yang terukur</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="media flex-column flex-lg-row align-items-center align-items-md-start">
-                <i class="mx-auto ml-md-0 mr-md-3 accent fas fa-comment-alt fa-3x"></i>
-                <div class="media-body mt-3 mt-md-0">
-                  <h5 class="bold mt-0 mb-1">Komentar Feedback</h5>
-                  <p class="m-0 d-md-none d-lg-block">Umpan balik uraian penugasan yang sangat intuitif</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section id="about">
+  {{ if isset .Site.Params "description" }}
+    {{ .Site.Params.description }}
+  {{ end }}
+  {{ if isset .Site.Params "social" }}
+      <p>Find Ian on
+      {{ $length := (len .Site.Params.social) }}
+      {{ range $index, $elem := .Site.Params.social}}
+      {{ if eq $elem.name "email" }}
+        <a class="icon" target="_blank" rel="noopener" href="mailto:{{ $elem.link }}">
+          <i class="fas fa-envelope"></i>
+        </a>
+        {{ else if eq $elem.name "rss" }}
+        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
+          <i class="fas fa-rss"></i>
+        </a>
+        {{ else if eq $elem.name "scholar" }}
+        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
+          <i class="fas fa-graduation-cap"></i>
+        </a>
+        {{ else }}
+        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
+          <i class="fab fa-{{ lower $elem.name }}"></i>
+        </a>
+        {{ end }}
+        {{ if (lt (add $index 2) $length) }}
+          {{- print " , " -}}
+        {{ else if (lt (add $index 1) $length) }}
+          {{- print " and " -}}
+        {{ else }}
+          {{- print " " -}}
+        {{ end }}
+      {{ end }}
+      or arrange a meeting with Ian on <a class="icon" target="_blank" rel="noopener" href="https://calendly.com/agustia">
+        <i class="far fa-calendar-alt"></i>
+      </a>
+      </p>
+  {{ end }}
   </section>
-  <!-- ./LiniPesan -->
-  <!-- <section class="section">
-    <div class="container bring-to-front">
-      <div class="row gap-y align-items-center text-center text-lg-left">
-        <div class="col-md-6 col-lg-5 ml-lg-auto order-md-2">
-          <div class="center-xy op-1">
-            <div class="shape shape-background rounded-circle shadow-lg bg-3" style="width: 600px; height: 600px;" data-aos="zoom-in"></div>
-          </div>
-          <div class="device-twin align-items-center">
-            <div class="mockup absolute right" data-aos="fade-right">
-              <div class="screen">
-                <img src="img/linikerja/mockup/linipesan-2.png" alt="...">
-              </div>
-              <span class="button"></span>
-            </div>
-            <div class="iphone front ml-0">
-              <div class="screen shadow-box">
-                <img src="img/linikerja/mockup/linipesan-1.png" alt="...">
-              </div>
-              <div class="notch"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 text-center text-md-left">
-          <div class="section-heading">
-            <i class="fas fa-comments fa-2x text-danger mb-3"></i>
-            <h2 class="bold font-md">LiniPesan</h2>
-            <p>Fitur Chat dan Komunikasi Tim</p>
-          </div>
-          <ul class="list-unstyled">
-            <li class="media flex-column flex-md-row">
-              <i class="mx-auto mr-md-3 mx-auto mr-md-3 accent fas fa-layer-group fa-3x"></i>
-              <div class="media-body mt-3 mt-md-0">
-                <h5 class="bold mt-0 mb-1">Ruang Diskusi Grup</h5>
-                <p class="m-0">Lakukan diskusi produktif dengan ruang-ruang terpisah, tidak lagi dipusingkan dengan banyak Grup WA</p>
-              </div>
-            </li>
-            <li class="media flex-column flex-md-row mt-3">
-              <i class="mx-auto mr-md-3 mx-auto mr-md-3 accent fas fa-address-book fa-3x"></i>
-              <div class="media-body mt-3 mt-md-0">
-                <h5 class="bold mt-0 mb-1">Kontak Organisasi</h5>
-                <p class="m-0">Terintegrasi dengan buku kontak organisasi, tidak perlu membuang waktu untuk mengatur kontak satu per satu</p>
-              </div>
-            </li>
-            <li class="media flex-column flex-md-row mt-3">
-              <i class="mx-auto mr-md-3 mx-auto mr-md-3 accent fas fa-paper-plane fa-3x"></i>
-              <div class="media-body mt-3 mt-md-0">
-                <h5 class="bold mt-0 mb-1">Semudah WA/Telegram</h5>
-                <p class="m-0">Kemudahan aplikasi chating populer dalam genggaman tangan anda</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  <!-- ./LiniAgenda -->
-  <!-- <section class="section overflow-hidden">
-    <div class="container bring-to-front">
-      <div class="row gap-y align-items-center">
-        <div class="col-md-6 col-lg-5 mr-lg-auto">
-          <div class="center-xy op-1">
-            <div class="shape shape-background rounded-circle shadow-lg bg-3" style="width: 600px; height: 600px;" data-aos="zoom-in"></div>
-          </div>
-          <div class="device-twin align-items-center">
-            <div class="absolute center-xy" style="max-width:550px" >
-              <div class="screen">
-                <img src="img/linikerja/mockup/liniagenda-1.png" data-aosss="zoom-in" style="max-width:550px" alt="...">
-              </div>
-              <span class="button"></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 text-center text-md-left">
-          <div class="section-heading">
-            <i class="fas fa-calendar-alt fa-2x text-danger mb-3"></i>
-            <h2 class="bold font-md">LiniAgenda</h2>
-            <p>Fitur Pengelolaan Agenda dan Rapat</p>
-          </div>
-          <div class="row gap-y">
-            <div class="col-md-6">
-              <div class="media flex-column flex-lg-row align-items-center align-items-md-start">
-                <i class="mx-auto ml-md-0 mr-md-3 accent fas fa-calendar-check fa-3x"></i>
-                <div class="media-body mt-3 mt-md-0">
-                  <h5 class="bold mt-0 mb-1">Kalender Tim</h5>
-                  <p class="m-0 d-md-none d-lg-block">Target bisnis dan agenda anggota tim di satu kalender digital</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="media flex-column flex-lg-row align-items-center align-items-md-start">
-                <i class="mx-auto ml-md-0 mr-md-3 accent fas fa-business-time fa-3x"></i>
-                <div class="media-body mt-3 mt-md-0">
-                  <h5 class="bold mt-0 mb-1">Rapat Terjadwal</h5>
-                  <p class="m-0 d-md-none d-lg-block">Atur rapat secara terjadwal berikut dengan undangannya</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="media flex-column flex-lg-row align-items-center align-items-md-start">
-                <i class="mx-auto ml-md-0 mr-md-3 accent fas fa-edit fa-3x"></i>
-                <div class="media-body mt-3 mt-md-0">
-                  <h5 class="bold mt-0 mb-1">Notulensi Rapat</h5>
-                  <p class="m-0 d-md-none d-lg-block">Pengambilan keputusan yang tercatat dengan baik, akses kapanpun & dimanapun</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="media flex-column flex-lg-row align-items-center align-items-md-start">
-                <i class="mx-auto ml-md-0 mr-md-3 accent fas fa-glasses fa-3x"></i>
-                <div class="media-body mt-3 mt-md-0">
-                  <h5 class="bold mt-0 mb-1">Semudah Aplikasi Zoom</h5>
-                  <p class="m-0 d-md-none d-lg-block">Kemudahan melakukan rapat virtual yang dibungkus dalam satu aplikasi</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  <!-- ./LiniPedia -->
-  <section class="section">
-    <div class="container bring-to-front">
-      <div class="row gap-y align-items-center text-center text-lg-left">
-        <div class="col-md-6 col-lg-5 ml-lg-auto order-md-2">
-          <div class="center-xy op-1">
-            <div class="shape shape-background rounded-circle shadow-lg bg-3" style="width: 600px; height: 600px;" data-aos="zoom-in"></div>
-          </div>
-          <div class="device-twin align-items-center">
-            <div class="mockup absolute right" data-aos="fade-right">
-              <div class="screen">
-                <img src="img/linikerja/mockup/linipedia-2.png" alt="...">
-              </div>
-              <span class="button"></span>
-            </div>
-            <div class="iphone front ml-0">
-              <div class="screen shadow-box">
-                <img src="img/linikerja/mockup/linipedia-1.png" alt="...">
-              </div>
-              <div class="notch"></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 text-center text-md-left">
-          <div class="section-heading">
-            <i class="fas fa-paragraph fa-2x text-danger mb-3"></i>
-            <h2 class="bold font-md">LiniPedia</h2>
-            <p>Fitur Pengelolaan Catatan, Dokumen dan <span class="italic">Knowledge Base</span></p>
-          </div>
-          <ul class="list-unstyled">
-            <li class="media flex-column flex-md-row ">
-              <i class="mx-auto mr-md-3 mx-auto mr-md-3 accent fas fa-brain fa-3x"></i>
-              <div class="media-body mt-3 mt-md-0">
-                <h5 class="bold mt-0 mb-1">Knowledge Base</h5>
-                <p class="m-0">Uraian dan catatan detail organisasi dan tim untuk menunjang pengambilan keputusan</p>
-              </div>
-            </li>
-            <li class="media flex-column flex-md-row mt-3">
-              <i class="mx-auto mr-md-3 mx-auto mr-md-3 accent fas fa-folder-open fa-3x"></i>
-              <div class="media-body mt-3 mt-md-0">
-                <h5 class="bold mt-0 mb-1">Dokumen Pendukung</h5>
-                <p class="m-0">Pengelolaan informasi baik yang terstruktur dan tidak terstruktur yang lebih sederhana</p>
-              </div>
-            </li>
-            <li class="media flex-column flex-md-row mt-3">
-              <i class="mx-auto mr-md-3 mx-auto mr-md-3 accent fas fa-cloud fa-3x"></i>
-              <div class="media-body mt-3 mt-md-0">
-                <h5 class="bold mt-0 mb-1">Berbasis Cloud</h5>
-                <p class="m-0">Akses kapan saja dan dimana saja anda berada, selalu <span class="italic">terupdate</span > dengan target bisnis perusahaan</p>
-              </div>
-            </li>
-            <li class="media flex-column flex-md-row mt-3">
-              <i class="mx-auto mr-md-3 mx-auto mr-md-3 accent fas fa-code-branch fa-3x"></i>
-              <div class="media-body mt-3 mt-md-0">
-                <h5 class="bold mt-0 mb-1">Terhubung Ke Tugas</h5>
-                <p class="m-0">Sambungkan penugasan ke dokumen pendukung dengan mudah</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ./App Why -->
-  <section id="why-linikerja" class="section">
-    <div class="container">
-      <div class="section-heading text-center">
-        <h2 class="bold">Mengapa Harus LiniKerja? </h2>
-        <p class="lead color-2">LiniKerja dibangun oleh tim yang berpengalaman dan mengalami secara langsung <br>permasalahan ekosistem kolaborasi kerja.</p>
-      </div>
-      <div class="row gap-y text-center text-md-center">
-        <div class="col-md-4 py-4 rounded shadow-hover">
-          <i class="pe pe-7s-compass pe-3x mb-3 text-danger"></i>
-          <h5 class="bold">Inklusif</h5>
-          <p class="">Bangun kepercayaan tim dengan penugasan dan sosialisasi deadline yang lebih transparan.</p>
-        </div>
-        <div class="col-md-4 py-4 rounded shadow-hover">
-          <i class="pe pe-7s-light pe-3x mb-3 text-danger"></i>
-          <h5 class="bold">Simpel</h5>
-          <p class="">Atur status capaian kerja dan dokumen pendukung dengan satu sentuhan jari. Tidak perlu berpindah-pindah banyak Aplikasi.</p>
-        </div>
-        <div class="col-md-4 py-4 rounded shadow-hover">
-          <i class="pe pe-7s-paper-plane pe-3x mb-3 text-danger"></i>
-          <h5 class="bold">Fleksibel</h5>
-          <p class="">Dapatkan update terkini capaian kerja tim kapanpun dan dimanapun.</p>
-        </div>
-        <div class="col-md-4 py-4 rounded shadow-hover">
-          <i class="pe pe-7s-keypad pe-3x mb-3 text-danger"></i>
-          <h5 class="bold">Tertata</h5>
-          <p class="">Pemisahan ruang diskusi untuk percakapan yang lebih terarah dan sesuai konteks. Tidak pusing dengan banyak Grup WA.</p>
-        </div>
-        <div class="col-md-4 py-4 rounded shadow-hover">
-          <i class="pe pe-7s-cloud pe-3x mb-3 text-danger"></i>
-          <h5 class="bold">Ringan</h5>
-          <p class="">Semua dokumen pendukung berada di cloud, tidak lagi bingung dengan storage yang terbatas di smartphone anda.</p>
-        </div>
-        <div class="col-md-4 py-4 rounded shadow-hover">
-          <i class="pe pe-7s-portfolio pe-3x mb-3 text-danger"></i>
-          <h5 class="bold">Profesional</h5>
-          <p class="">Kolaborasi dan Transparansi dengan Partner/Client semakin mudah melalui Shared Project.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- ./CTA - Try it Free -->
-  {{ partial "call-to-action" }}
-</main>
 
+  <section id="writing">
+    <!-- TODO: use built in mainSections parameter https://gohugo.io/functions/where/#mainsections -->
+    <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">Writings</a></span>
+    {{ if (and (and (isset .Site.Params "tagsoverview") (eq .Site.Params.tagsOverview true)) (gt (len .Site.Taxonomies.tags) 0)) }}
+    <span class="h2">Topics</span>
+    <span class="widget tagcloud">
+      {{ $AllRegularPagesCount := len .Site.RegularPages }}
+      {{ range $elem := .Site.Taxonomies.tags.Alphabetical }}
+      <a style="font-size: {{ (add 0.5 (mul 5 (div (float $elem.Count) $AllRegularPagesCount))) }}rem;" href="{{ $elem.Page.Permalink }}">
+        {{- .Page.Title -}}
+      </a>
+      {{ end }}
+    </span>
+    <span class="h2">Most recent</span>
+    {{ end }}
+
+    {{ $showAllPostsOnHomePage := false }}
+    {{ if (isset .Site.Params "showallpostsonhomepage") }}
+      {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
+    {{ end }}
+    {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
+    {{ if $showAllPostsOnHomePage }}
+    <ul class="post-list">
+      {{ range (sort .Paginator.Pages "Date" "desc") }}
+        <li class="post-item">
+          <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
+          <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
+        </li>
+      {{ end }}
+    </ul>
+
+    {{ partial "pagination.html" . }}
+
+    {{ else }}
+    <ul class="post-list">
+      {{ .Scratch.Set "count" 5 }}
+      {{ if isset .Site.Params "postsonhomepage" }}
+        {{ .Scratch.Set "count" .Site.Params.postsOnHomePage }}
+      {{ end }}
+      {{ range (first (.Scratch.Get "count") (sort .Site.RegularPages "Date" "desc")) }}
+        <li class="post-item">
+          <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
+          <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
+        </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </section>
+
+  {{ $showProjectsList := false }}
+  {{ if .Site.Data.projects }}
+    {{ $showProjectsList = true }}
+  {{ else if (isset .Site.Params "showProjectsList") }}
+    {{ $showProjectsList = .Site.Params.ShowProjectsList }}
+  {{ end }}
+  {{ if $showProjectsList }}
+    {{ $projectsUrl := "#" }}
+    {{ if isset .Site.Params "projectsUrl" }}
+      {{ $projectsUrl = .Site.Params.projectsUrl }}
+    {{ end }}
+  <section id="projects">
+    <span class="h1"><a href="{{ $projectsUrl }}">Projects</a></span>
+    <ul class="project-list">
+        {{ range .Site.Data.projects.list }}
+        <li class="project-item">
+          <a href="{{ .url }}">{{ .name }}</a>: {{ .desc | markdownify }}
+        </li>
+        {{ end }}
+    </ul>
+  </section>
+  {{ end }}
 {{ end }}

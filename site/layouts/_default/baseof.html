@@ -1,124 +1,27 @@
-<!doctype html>
-<html lang="{{ $.Site.Language.Lang }}">
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "head.html" . }}
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <base href="{{ if getenv "CONTEXT" }}{{ cond (eq "production" (getenv "CONTEXT")) (getenv "URL") (getenv "DEPLOY_PRIME_URL") }}{{ else }}{{ $.Site.BaseURL }}{{ end }}">
-  <title>{{ if $.Title }}{{ $.Title }}{{ else if $.Site.Title}}{{$.Site.Title}}{{ else }}LiniKerja - Aplikasi Kolaborasi, Komunikasi dan Produktivitas Kerja Tim{{end}}</title>
+    {{ partial "header.html" . }}
 
-  <meta name="description" content="Aplikasi Kolaborasi, Komunikasi dan Produktivitas Kerja Tim."/>
+    {{ block "main" . }}
+    {{ end }}
 
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<!-- Place favicon.ico in the root directory -->
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-	<!-- <link rel="icon" href="favicon.ico"> -->
-	<link rel="icon" type="image/png" href="/favicon.png">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,300,400,700,900" rel="stylesheet">
-	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet"> -->
-	<link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    {{ partial "footer.html" . }}
 
-	<!-- themeforest:css -->
-	<link rel="stylesheet" href="/css/aos.css">
-	<link rel="stylesheet" href="/css/bootstrap.css">
-	<link rel="stylesheet" href="/css/cookieconsent.min.css">
-	<link rel="stylesheet" href="/css/fontawesome-all.css">
-	<link rel="stylesheet" href="/css/helper.css">
-	<link rel="stylesheet" href="/css/magnific-popup.css">
-	<link rel="stylesheet" href="/css/odometer-theme-minimal.css">
-	<link rel="stylesheet" href="/css/pe-icon-7-stroke.css">
-	<link rel="stylesheet" href="/css/prettify.css">
-	<link rel="stylesheet" href="/css/simplebar.css">
-	<link rel="stylesheet" href="/css/smart_wizard.css">
-	<link rel="stylesheet" href="/css/smart_wizard_theme_arrows.css">
-	<link rel="stylesheet" href="/css/smart_wizard_theme_circles.css">
-	<link rel="stylesheet" href="/css/smart_wizard_theme_dots.css">
-	<link rel="stylesheet" href="/css/swiper.css">
-	<link rel="stylesheet" href="/css/styles.css">
-
-  {{ $stylesheet := .Site.Data.webpack.main }}
-  {{ with $stylesheet.css }}
-    <link href="{{ relURL . }}" rel="stylesheet">
+  </div>
+  {{ if .Site.GoogleAnalytics }}
+    {{ if .Site.Params.googleAnalyticsAsync }}
+      {{ template "_internal/google_analytics_async.html" . }}
+    {{ else }}
+      {{ template "_internal/google_analytics.html" . }}
+    {{ end }}
   {{ end }}
-</head>
-
-<body>
-
-  {{ block "header" . }}{{ partial "header" . }}{{end}}
-
-  {{ block "main" . }}{{end}}
-  
-  {{ block "footer" . }}{{ partial "footer" . }}{{end}}
-
-  <!-- themeforest:js -->
-	<script>
-		window.odometerOptions = {
-			format: '(.ddd),dd'
-		}
-	</script>
-	<script src="/js/01.cookie-consent-util.js"></script>
-	<script src="/js/02.1.cookie-consent-themes.js"></script>
-	<script src="/js/02.2.cookie-consent-custom-css.js"></script>
-	<script src="/js/02.3.cookie-consent-informational.js"></script>
-	<script src="/js/02.4.cookie-consent-opt-out.js"></script>
-	<script src="/js/02.5.cookie-consent-opt-in.js"></script>
-	<script src="/js/02.6.cookie-consent-location.js"></script>
-
-	<script src="/js/jquery.js"></script>
-	<script src="/js/jquery.animatebar.js"></script>
-	<script src="/js/odometer.min.js"></script>
-	<script src="/js/simplebar.js"></script>
-	<script src="/js/swiper.js"></script>
-	<script src="/js/popper.js"></script>
-	<script src="/js/jquery.easing.min.js"></script>
-	<script src="/js/jquery.validate.js"></script>
-	<script src="/js/jquery.smartWizard.js"></script>
-	<script src="/js/bootstrap.js"></script>
-	<script src="/js/jquery.waypoints.js"></script>
-	<script src="/js/jquery.counterup.js"></script>
-	<script src="/js/modernizr-2.8.3.min.js"></script>
-	<script src="/js/aos.js"></script>
-	<script src="/js/particles.js"></script>
-	<script src="/js/typed.js"></script>
-	<script src="/js/prettify.js"></script>
-	<script src="/js/jquery.magnific-popup.js"></script>
-	<script src="/js/cookieconsent.min.js"></script>
-	<script src="/js/common-script.js"></script>
-	<script src="/js/forms.js"></script>
-	<script src="/js/site.js"></script>
-	<script src="/js/stripe-menu.js"></script>
-	<!-- <script src="/js/jquery.countdown.min.js"></script> -->
-	<script src="https://embed.typeform.com/embed.js"></script>
-	<!-- endinject -->
-
-  {{ $script := .Site.Data.webpack.main }}
-  {{ with $script.js }}
-    <script src="{{ relURL . }}"></script>
-  {{ end }}
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171068585-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-171068585-1');
-	</script>
-
-
-
-	<div class="chat-with-wa">
-		<a class="btn btn-rounded px-3 d-sm-none" target="_blank" href="https://api.whatsapp.com/send?phone=6285642826212&amp;text=Halo">
-			<img src="/img/whatsapp.png" class="" alt="...">
-			<span>&nbsp<span>
-		</a>
-		<a class="btn btn-rounded px-3 d-none d-sm-block" target="_blank" href="https://web.whatsapp.com/send?phone=6285642826212&amp;text=Halo">
-			<img src="/img/whatsapp.png" class="" alt="...">
-			<span>Chat via WhatsApp<span>
-		</a>
-  	</div>
-
 </body>
 
+<link rel="stylesheet" href={{ "lib/font-awesome/css/all.min.css" | relURL }}>
+<script src={{ "lib/jquery/jquery.min.js" | relURL }}></script>
+<script src={{ "js/main.js" | relURL }}></script>
 </html>
